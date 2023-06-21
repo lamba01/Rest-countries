@@ -1,0 +1,83 @@
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: hsl(207, 26%, 17%);
+    color: white;
+    
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(209, 23%, 22%);
+    padding: 20px 50px;
+}
+nav h1 {
+    font-size: 20px;
+}
+nav span {
+    font-size: 14px;
+    font-weight: 600;
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+}
+input {
+    width: 30%;
+    height: 30px;
+    padding: 10px;
+}
+.filt {
+    margin-bottom: 5px;
+    background-color: hsl(209, 23%, 22%);
+    padding: 10px;
+}
+.region {
+    background-color: hsl(209, 23%, 22%);
+    padding: 10px;
+    display: none;
+}
+ul {
+    list-style-type: none;
+}
+.country-card {
+    background-color: hsl(209, 23%, 22%);
+    width: 20vw;
+    height: 40vh;
+    margin-bottom: 20px;
+}
+#countries-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 3.125rem;
+    place-items: center;
+    padding: 0px 50px;
+}
+.country-flag {
+    width: 100%;
+    height: 50%;
+}
+.country-name {
+    font-size: 14px;
+    font-weight: 800;
+    padding-bottom: 10px;
+}
+.country-card-text {
+    font-size: 12px;
+    font-weight: 300;
+    padding: 15px;
+}
+.none {
+    display: none;
+}
+.display {
+    display: block;
+}
+
+
+
