@@ -83,11 +83,17 @@ function displayCountryData(countries) {
 
     return countryCard;
   }
+  function getCountryByName(name) {
+    return countries.find((country) => country.name.common === name);
+  }
 
   // Function to display a single country
-  function displaySingleCountry(country) {
+  function displaySingleCountry(selectedcountry) {
     // Clear the countries container
     countriesContainer.innerHTML = "";
+
+    // clear the single countries
+    singlecountry.innerHTML = "";
 
     // remove search field
     let top = document.querySelector(".top");
@@ -101,7 +107,7 @@ function displayCountryData(countries) {
 
     // Create and append the selected country card
     const maindiv = document.createElement("div");
-    maindiv.classList.add("country-card-text")
+    maindiv.classList.add("country-card-text");
     const maintext = document.createElement("div");
     const countryCardText = document.createElement("div");
     const countryinfo = document.createElement("div");
@@ -109,26 +115,26 @@ function displayCountryData(countries) {
     // single country card data
     const countryFlag = document.createElement("img");
     countryFlag.classList.add("single-countryflag");
-    countryFlag.src = country.flags.png;
-    countryFlag.alt = `${country.name.common} Flag`;
+    countryFlag.src = selectedcountry.flags.png;
+    countryFlag.alt = `${selectedcountry.name.common} Flag`;
 
     // countryname data
     const countryName = document.createElement("h2");
     countryName.classList.add("single-countryname");
-    countryName.textContent = country.name.common;
+    countryName.textContent = selectedcountry.name.common;
 
     const nativename = document.createElement("p");
     const nativeNameValue = document.createElement("span");
-    nativeNameValue.textContent = country.name.official;
+    nativeNameValue.textContent = selectedcountry.name.official;
     nativeNameValue.classList.add("okay");
-    nativename.textContent = `Native Name:`; 
+    nativename.textContent = `Native Name:`;
     nativename.appendChild(nativeNameValue);
 
     // country capital data
     const countryCapital = document.createElement("p");
     countryCapital.textContent = `Capital: `;
     const countryCapitalValue = document.createElement("span");
-    countryCapitalValue.textContent = country.capital;
+    countryCapitalValue.textContent = selectedcountry.capital;
     countryCapitalValue.classList.add("okay");
     countryCapital.appendChild(countryCapitalValue);
 
@@ -136,7 +142,7 @@ function displayCountryData(countries) {
     const countryPopulation = document.createElement("p");
     countryPopulation.textContent = `Population: `;
     const countryPopulationValue = document.createElement("span");
-    countryPopulationValue.textContent = country.population;
+    countryPopulationValue.textContent = selectedcountry.population;
     countryPopulationValue.classList.add("okay");
     countryPopulation.appendChild(countryPopulationValue);
 
@@ -144,19 +150,19 @@ function displayCountryData(countries) {
     const countrySubregion = document.createElement("p");
     countrySubregion.textContent = `Sub region: `;
     const countrySubregionValue = document.createElement("span");
-    countrySubregionValue.textContent = country.subregion;
+    countrySubregionValue.textContent = selectedcountry.subregion;
     countrySubregionValue.classList.add("okay");
     countrySubregion.appendChild(countrySubregionValue);
 
     const countryregion = document.createElement("p");
-    countryregion.textContent = `Region: ${country.region}`;
+    countryregion.textContent = `Region: `;
     const countryregionValue = document.createElement("span");
-    countryregionValue.textContent = country.region;
+    countryregionValue.textContent = selectedcountry.region;
     countryregionValue.classList.add("okay");
     countryregion.appendChild(countryregionValue);
 
     // country currency data
-    const currencyData = country.currencies;
+    const currencyData = selectedcountry.currencies;
     const currencyCode = Object.keys(currencyData)[0]; // Get the first (and likely only) currency code
 
     // Create an element to display the currency name
@@ -167,7 +173,7 @@ function displayCountryData(countries) {
     countrycurrencyValue.classList.add("okay");
     currencyNameElement.appendChild(countrycurrencyValue);
 
-    const tldData = country.tld;
+    const tldData = selectedcountry.tld;
     const tld = tldData[0]; // Get the first TLD in the array
 
     // Create an element to display the TLD
@@ -179,19 +185,21 @@ function displayCountryData(countries) {
     tldElement.appendChild(countrytldValue);
 
     // Accessing the languages
-    const languagesData = country.languages;
+    const languagesData = selectedcountry.languages;
     const languageCodes = Object.keys(languagesData);
 
     // Create an element to display the languages
     const languagesElement = document.createElement("p");
-    languagesElement.textContent = `Languages: `
+    languagesElement.textContent = `Languages: `;
     const countrylanguageValue = document.createElement("span");
-    countrylanguageValue.textContent = languageCodes.map((code) => languagesData[code]).join(", ");
+    countrylanguageValue.textContent = languageCodes
+      .map((code) => languagesData[code])
+      .join(", ");
     countrylanguageValue.classList.add("okay");
     languagesElement.appendChild(countrylanguageValue);
 
     // Accessing the border countries (if available)
-    const borderCountries = country.borders || []; // Use an empty array if borders is missing
+    const borderCountries = selectedcountry.borders || []; // Use an empty array if borders is missing
 
     // Fetch the full names of the bordering countries
     const borderCountryNames = borderCountries.map((code) => {
@@ -199,41 +207,31 @@ function displayCountryData(countries) {
       return borderCountry ? borderCountry.name.common : "Unknown Country";
     });
 
-    // // Create an element to display the border countries
-    // const borderCountriesElement = document.createElement("p");
-    // if (borderCountryNames.length > 0) {
-    //   borderCountriesElement.textContent = `Border Countries: `;
-    // } else {
-    //   borderCountriesElement.textContent = "No bordering countries.";
-    // }
-    // // design for the countries
-    // const countryborderValue = document.createElement("span");
-    // countryborderValue.textContent = borderCountryNames.join();
-    // countryborderValue.classList.add("bordercountries");
-    // borderCountriesElement.appendChild(countryborderValue);
-
     const borderCountriesElement = document.createElement("p");
 
-if (borderCountryNames.length > 0) {
-  borderCountriesElement.textContent = "Border Countries:";
-} else {
-  borderCountriesElement.textContent = "No bordering countries.";
-}
+    if (borderCountryNames.length > 0) {
+      borderCountriesElement.textContent = "Border Countries:";
+    } else {
+      borderCountriesElement.textContent = "No bordering countries.";
+    }
 
-// Assuming you have already calculated the 'borderCountryNames' array
+    // Assuming you have already calculated the 'borderCountryNames' array
 
-borderCountryNames.forEach(borderCountryName => {
-  const borderCountryElement = document.createElement("span");
-  borderCountryElement.textContent =  borderCountryName
-  borderCountryElement.classList.add("bordercountries");
-  borderCountriesElement.appendChild(borderCountryElement);
-  borderCountriesElement.classList.add("border");
-});
-
-
+    borderCountryNames.forEach((borderCountryName) => {
+      const borderCountryElement = document.createElement("span");
+      borderCountryElement.textContent = borderCountryName;
+      borderCountryElement.classList.add("bordercountries");
+      borderCountryElement.onclick = () => {
+        const borderCountryData = getCountryByName(borderCountryName);
+        displaySingleCountry(borderCountryData);
+      };
+      borderCountriesElement.appendChild(borderCountryElement);
+      borderCountriesElement.classList.add("border");
+    });
 
     // Create and append the back button
     const backBtn = document.createElement("button");
+    backBtn.classList.add("backbtn");
     backBtn.textContent = "Back";
     backBtn.addEventListener("click", () => {
       // Clear the countries container

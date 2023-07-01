@@ -103,10 +103,8 @@ ul {
 .single-countrycard {
   display: grid;
   grid-template-columns: 50% 50%;
-  place-content: center;
   align-items: center;
   padding: 0 50px;
-  height: 80vh;
 }
 .single-countryflag {
   width: 35vw;
@@ -139,4 +137,13 @@ ul {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+}
+.backbtn {
+  padding: 5px 30px;
+  color: hsl(0, 0%, 78%);
+  background-color: hsl(209, 23%, 22%);
+  border: none;
+  box-shadow: 1px 1px 1px 1px black;
+  cursor: pointer;
+  margin: 50px 0px 50px 50px;
 }
