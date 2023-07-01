@@ -112,39 +112,71 @@ function displayCountryData(countries) {
     countryFlag.src = country.flags.png;
     countryFlag.alt = `${country.name.common} Flag`;
 
+    // countryname data
     const countryName = document.createElement("h2");
     countryName.classList.add("single-countryname");
     countryName.textContent = country.name.common;
 
     const nativename = document.createElement("p");
-    nativename.textContent = `Native Name: ${country.name.official}`;
+    const nativeNameValue = document.createElement("span");
+    nativeNameValue.textContent = country.name.official;
+    nativeNameValue.classList.add("okay");
+    nativename.textContent = `Native Name:`; 
+    nativename.appendChild(nativeNameValue);
 
+    // country capital data
     const countryCapital = document.createElement("p");
-    countryCapital.textContent = `Capital: ${country.capital}`;
+    countryCapital.textContent = `Capital: `;
+    const countryCapitalValue = document.createElement("span");
+    countryCapitalValue.textContent = country.capital;
+    countryCapitalValue.classList.add("okay");
+    countryCapital.appendChild(countryCapitalValue);
 
+    // country population data
     const countryPopulation = document.createElement("p");
-    countryPopulation.textContent = `Population: ${country.population}`;
+    countryPopulation.textContent = `Population: `;
+    const countryPopulationValue = document.createElement("span");
+    countryPopulationValue.textContent = country.population;
+    countryPopulationValue.classList.add("okay");
+    countryPopulation.appendChild(countryPopulationValue);
 
+    // country region and sub-region data
     const countrySubregion = document.createElement("p");
-    countrySubregion.textContent = `Sub region: ${country.subregion}`;
+    countrySubregion.textContent = `Sub region: `;
+    const countrySubregionValue = document.createElement("span");
+    countrySubregionValue.textContent = country.subregion;
+    countrySubregionValue.classList.add("okay");
+    countrySubregion.appendChild(countrySubregionValue);
 
     const countryregion = document.createElement("p");
     countryregion.textContent = `Region: ${country.region}`;
+    const countryregionValue = document.createElement("span");
+    countryregionValue.textContent = country.region;
+    countryregionValue.classList.add("okay");
+    countryregion.appendChild(countryregionValue);
 
+    // country currency data
     const currencyData = country.currencies;
     const currencyCode = Object.keys(currencyData)[0]; // Get the first (and likely only) currency code
-    const currencyName = currencyData[currencyCode].name;
 
     // Create an element to display the currency name
     const currencyNameElement = document.createElement("p");
-    currencyNameElement.textContent = `Currency: ${currencyName}`;
+    currencyNameElement.textContent = `Currency: `;
+    const countrycurrencyValue = document.createElement("span");
+    countrycurrencyValue.textContent = currencyData[currencyCode].name;
+    countrycurrencyValue.classList.add("okay");
+    currencyNameElement.appendChild(countrycurrencyValue);
 
     const tldData = country.tld;
     const tld = tldData[0]; // Get the first TLD in the array
 
     // Create an element to display the TLD
     const tldElement = document.createElement("p");
-    tldElement.textContent = `Top-Level Domain: ${tld}`;
+    tldElement.textContent = `Top-Level Domain: `;
+    const countrytldValue = document.createElement("span");
+    countrytldValue.textContent = tld;
+    countrytldValue.classList.add("okay");
+    tldElement.appendChild(countrytldValue);
 
     // Accessing the languages
     const languagesData = country.languages;
@@ -152,10 +184,11 @@ function displayCountryData(countries) {
 
     // Create an element to display the languages
     const languagesElement = document.createElement("p");
-    const languageNames = languageCodes
-      .map((code) => languagesData[code])
-      .join(", ");
-    languagesElement.textContent = `Languages: ${languageNames}`;
+    languagesElement.textContent = `Languages: `
+    const countrylanguageValue = document.createElement("span");
+    countrylanguageValue.textContent = languageCodes.map((code) => languagesData[code]).join(", ");
+    countrylanguageValue.classList.add("okay");
+    languagesElement.appendChild(countrylanguageValue);
 
     // Accessing the border countries (if available)
     const borderCountries = country.borders || []; // Use an empty array if borders is missing
@@ -166,15 +199,38 @@ function displayCountryData(countries) {
       return borderCountry ? borderCountry.name.common : "Unknown Country";
     });
 
-    // Create an element to display the border countries
+    // // Create an element to display the border countries
+    // const borderCountriesElement = document.createElement("p");
+    // if (borderCountryNames.length > 0) {
+    //   borderCountriesElement.textContent = `Border Countries: `;
+    // } else {
+    //   borderCountriesElement.textContent = "No bordering countries.";
+    // }
+    // // design for the countries
+    // const countryborderValue = document.createElement("span");
+    // countryborderValue.textContent = borderCountryNames.join();
+    // countryborderValue.classList.add("bordercountries");
+    // borderCountriesElement.appendChild(countryborderValue);
+
     const borderCountriesElement = document.createElement("p");
-    if (borderCountryNames.length > 0) {
-      borderCountriesElement.textContent = `Border Countries: ${borderCountryNames.join(
-        ", "
-      )}`;
-    } else {
-      borderCountriesElement.textContent = "No bordering countries.";
-    }
+
+if (borderCountryNames.length > 0) {
+  borderCountriesElement.textContent = "Border Countries:";
+} else {
+  borderCountriesElement.textContent = "No bordering countries.";
+}
+
+// Assuming you have already calculated the 'borderCountryNames' array
+
+borderCountryNames.forEach(borderCountryName => {
+  const borderCountryElement = document.createElement("span");
+  borderCountryElement.textContent =  borderCountryName
+  borderCountryElement.classList.add("bordercountries");
+  borderCountriesElement.appendChild(borderCountryElement);
+  borderCountriesElement.classList.add("border");
+});
+
+
 
     // Create and append the back button
     const backBtn = document.createElement("button");

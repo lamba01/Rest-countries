@@ -113,11 +113,30 @@ ul {
   height: 50vh;
 }
 .single-countryname {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 800;
+  padding-bottom: 20px;
 }
 .main-text {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+.okay {
+  color: hsl(0, 0%, 78%);
+}
+.bordercountries {
+  padding: 5px 10px;
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 78%);
+  cursor: pointer;
+}
+.bordercountries:hover {
+  opacity: .7;
+}
+.border {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
