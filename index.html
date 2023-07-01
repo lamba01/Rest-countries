@@ -12,20 +12,24 @@
       <span>Dark Mode</span>
     </nav>
     <div class="top">
-        <input type="search" name="Countries" id="input" placeholder="Search for a country">
-        <div>
-            <div class="filt" id="filter"><span>filter by region</span></div>
-            <div class="region" id="region">
-                <ul>
-                    <li>Africa</li>
-                    <li>America</li>
-                    <li>Asia</li>
-                    <li>Europe</li>
-                    <li>Oceania</li>
-                </ul>
-            </div>
+      <input
+        type="search"
+        name="Countries"
+        id="input"
+        placeholder="Search for a country"
+      />
+      <div>
+        <div class="filt" id="filter"><span>filter by region</span></div>
+        <div class="region" id="region">
+          <span class="continent-button" data-continent="Africa">Africa</span>
+          <span class="continent-button" data-continent="Americas">America</span>
+          <span class="continent-button" data-continent="Asia">Asia</span>
+          <span class="continent-button" data-continent="Europe">Europe</span>
+          <span class="continent-button" data-continent="Oceania">Oceania</span>         
         </div>
+      </div>
     </div>
+    <div id="single-container"></div>
     <div id="countries-container"></div>
     <script src="/script.js"></script>
   </body>
