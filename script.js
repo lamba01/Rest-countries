@@ -3,6 +3,11 @@ let region = document.getElementById("region");
 filter.onclick = function () {
   region.classList.toggle("display");
 };
+region.onclick = function () {
+  if(region.classList.contains("display")){
+    region.classList.remove("display");
+  }
+}
 // Function to fetch country data from the API
 function fetchCountryData() {
   const apiUrl = "https://restcountries.com/v3.1/all";
@@ -94,6 +99,9 @@ function displayCountryData(countries) {
 
     // clear the single countries
     singlecountry.innerHTML = "";
+
+    // clear any value inout in search field
+    searchInput.value = "";
 
     // remove search field
     let top = document.querySelector(".top");
@@ -300,4 +308,26 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchCountryData().then((countries) => {
     displayCountryData(countries);
   });
+});
+
+// search field
+function filterCountries(searchQuery) {
+  const countriesContainer = document.getElementById("countries-container");
+  const countries = countriesContainer.querySelectorAll(".country-card");
+
+  countries.forEach((countryCard) => {
+    const countryName = countryCard.querySelector(".country-name").textContent.toLowerCase();
+    if (countryName.includes(searchQuery.toLowerCase())) {
+      countryCard.style.display = "block";
+    } else {
+      countryCard.style.display = "none";
+    }
+  });
+}
+
+// Add event listener to the search input
+const searchInput = document.getElementById("input");
+searchInput.addEventListener("input", (event) => {
+  const searchQuery = event.target.value;
+  filterCountries(searchQuery);
 });

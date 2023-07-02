@@ -28,7 +28,7 @@ nav span {
 .top {
   display: flex;
   justify-content: space-between;
-  padding: 0px 50px;
+  margin: 20px 50px;
   top: 100px;
   z-index: 2;
 }
@@ -37,15 +37,20 @@ input {
   height: 30px;
   padding: 10px;
 }
+input:focus {
+  outline: none;
+}
 .filt {
   margin-bottom: 5px;
   background-color: hsl(209, 23%, 22%);
   padding: 10px;
+  width: 120px;
+  cursor: pointer;
 }
 .region {
   background-color: hsl(209, 23%, 22%);
   position: fixed;
-  width: 100%;
+  width: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,6 +63,15 @@ input {
   transition: max-height, 0.8s ease-in-out;
   overflow-y: hidden;
   overflow-x: hidden;
+}
+.continent-button {
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+.display {
+  max-height: 150px;
+  padding: 10px;
+  width: 120px;
 }
 ul {
   list-style-type: none;
@@ -92,13 +106,6 @@ ul {
 }
 .none {
   display: none;
-}
-.display {
-  max-height: 100px;
-  padding: 10px;
-}
-.continent-button {
-  cursor: pointer;
 }
 .single-countrycard {
   display: grid;
@@ -146,4 +153,7 @@ ul {
   box-shadow: 1px 1px 1px 1px black;
   cursor: pointer;
   margin: 50px 0px 50px 50px;
+}
+.backbtn:hover {
+  box-shadow: 1px 1px 1px 1px hsl(0, 0%, 52%);
 }
