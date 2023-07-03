@@ -4,10 +4,11 @@ filter.onclick = function () {
   region.classList.toggle("display");
 };
 region.onclick = function () {
-  if(region.classList.contains("display")){
+  if (region.classList.contains("display")) {
     region.classList.remove("display");
   }
-}
+};
+
 // Function to fetch country data from the API
 function fetchCountryData() {
   const apiUrl = "https://restcountries.com/v3.1/all";
@@ -68,7 +69,7 @@ function displayCountryData(countries) {
     countryCapital.textContent = `Capital: ${country.capital}`;
 
     const countryPopulation = document.createElement("p");
-    countryPopulation.textContent = `Population: ${country.population}`;
+    countryPopulation.textContent = `Population: ${country.population.toLocaleString()}`;
 
     const countryregionn = document.createElement("p");
     countryregionn.textContent = `Region: ${country.region}`;
@@ -135,8 +136,9 @@ function displayCountryData(countries) {
     const nativeNameValue = document.createElement("span");
     nativeNameValue.textContent = selectedcountry.name.official;
     nativeNameValue.classList.add("okay");
-    nativename.textContent = `Native Name:`;
+    nativename.textContent = `Native Name: `;
     nativename.appendChild(nativeNameValue);
+    nativename.classList.add("data");
 
     // country capital data
     const countryCapital = document.createElement("p");
@@ -145,14 +147,17 @@ function displayCountryData(countries) {
     countryCapitalValue.textContent = selectedcountry.capital;
     countryCapitalValue.classList.add("okay");
     countryCapital.appendChild(countryCapitalValue);
+    countryCapital.classList.add("data");
 
     // country population data
     const countryPopulation = document.createElement("p");
     countryPopulation.textContent = `Population: `;
     const countryPopulationValue = document.createElement("span");
-    countryPopulationValue.textContent = selectedcountry.population;
+    countryPopulationValue.textContent =
+      selectedcountry.population.toLocaleString();
     countryPopulationValue.classList.add("okay");
     countryPopulation.appendChild(countryPopulationValue);
+    countryPopulation.classList.add("data");
 
     // country region and sub-region data
     const countrySubregion = document.createElement("p");
@@ -161,6 +166,7 @@ function displayCountryData(countries) {
     countrySubregionValue.textContent = selectedcountry.subregion;
     countrySubregionValue.classList.add("okay");
     countrySubregion.appendChild(countrySubregionValue);
+    countrySubregion.classList.add("data");
 
     const countryregion = document.createElement("p");
     countryregion.textContent = `Region: `;
@@ -168,6 +174,7 @@ function displayCountryData(countries) {
     countryregionValue.textContent = selectedcountry.region;
     countryregionValue.classList.add("okay");
     countryregion.appendChild(countryregionValue);
+    countryregion.classList.add("data");
 
     // country currency data
     const currencyData = selectedcountry.currencies;
@@ -180,6 +187,7 @@ function displayCountryData(countries) {
     countrycurrencyValue.textContent = currencyData[currencyCode].name;
     countrycurrencyValue.classList.add("okay");
     currencyNameElement.appendChild(countrycurrencyValue);
+    currencyNameElement.classList.add("data");
 
     const tldData = selectedcountry.tld;
     const tld = tldData[0]; // Get the first TLD in the array
@@ -191,6 +199,7 @@ function displayCountryData(countries) {
     countrytldValue.textContent = tld;
     countrytldValue.classList.add("okay");
     tldElement.appendChild(countrytldValue);
+    tldElement.classList.add("data");
 
     // Accessing the languages
     const languagesData = selectedcountry.languages;
@@ -205,6 +214,7 @@ function displayCountryData(countries) {
       .join(", ");
     countrylanguageValue.classList.add("okay");
     languagesElement.appendChild(countrylanguageValue);
+    languagesElement.classList.add("data");
 
     // Accessing the border countries (if available)
     const borderCountries = selectedcountry.borders || []; // Use an empty array if borders is missing
@@ -316,7 +326,9 @@ function filterCountries(searchQuery) {
   const countries = countriesContainer.querySelectorAll(".country-card");
 
   countries.forEach((countryCard) => {
-    const countryName = countryCard.querySelector(".country-name").textContent.toLowerCase();
+    const countryName = countryCard
+      .querySelector(".country-name")
+      .textContent.toLowerCase();
     if (countryName.includes(searchQuery.toLowerCase())) {
       countryCard.style.display = "block";
     } else {
@@ -331,3 +343,6 @@ searchInput.addEventListener("input", (event) => {
   const searchQuery = event.target.value;
   filterCountries(searchQuery);
 });
+
+
+  

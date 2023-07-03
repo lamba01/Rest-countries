@@ -36,6 +36,7 @@ input {
   width: 30%;
   height: 30px;
   padding: 10px;
+  border: none;
 }
 input:focus {
   outline: none;
@@ -82,6 +83,10 @@ ul {
   height: 40vh;
   margin-bottom: 20px;
   cursor: pointer;
+  border-radius: 2px;
+}
+.country-card:hover {
+  box-shadow: 1px 1px black;
 }
 #countries-container {
   display: grid;
@@ -127,14 +132,19 @@ ul {
   justify-content: space-between;
   width: 100%;
 }
+.data {
+  font-weight: 800;
+}
 .okay {
   color: hsl(0, 0%, 78%);
+  font-weight: 600;
 }
 .bordercountries {
   padding: 5px 10px;
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 78%);
   cursor: pointer;
+  font-weight: 600;
 }
 .bordercountries:hover {
   opacity: .7;
@@ -144,6 +154,7 @@ ul {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+  font-weight: 800;
 }
 .backbtn {
   padding: 5px 30px;
