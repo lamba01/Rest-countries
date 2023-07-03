@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution]((https://github.com/lamba01/Rest-countries/)
+- Solution URL: [https://github.com/lamba01/Rest-countries/]((https://github.com/lamba01/Rest-countries/)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -94,7 +94,7 @@ This is my third project using the fetch API, I think I am finally comfortable w
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/lamba01)
+- Frontend Mentor - [@lamba01](https://www.frontendmentor.io/profile/lamba01)
 - Twitter - [@lambacodes](https://www.twitter.com/lambacodes)
 
 
