@@ -20,23 +20,20 @@ nav h1 {
   font-size: 20px;
   padding: 50px;
 }
-nav span {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 50px;
-}
 .top {
   display: flex;
   justify-content: space-between;
-  margin: 20px 50px;
+  margin: 20px 55px;
   top: 100px;
   z-index: 2;
 }
 input {
   width: 30%;
   height: 30px;
-  padding: 10px;
+  padding: 20px;
   border: none;
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 98%);
 }
 input:focus {
   outline: none;
@@ -45,13 +42,13 @@ input:focus {
   margin-bottom: 5px;
   background-color: hsl(209, 23%, 22%);
   padding: 10px;
-  width: 120px;
+  width: 150px;
   cursor: pointer;
 }
 .region {
   background-color: hsl(209, 23%, 22%);
   position: fixed;
-  width: 120px;
+  width: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,7 +69,7 @@ input:focus {
 .display {
   max-height: 150px;
   padding: 10px;
-  width: 120px;
+  width: 150px;
 }
 ul {
   list-style-type: none;
@@ -90,8 +87,8 @@ ul {
 }
 #countries-container {
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 3.125rem;
+  grid-template-columns: repeat(auto-fill, minmax(17vw, 1fr));
+  gap: 30px;
   place-items: center;
   padding: 0px 50px;
 }
@@ -167,4 +164,90 @@ ul {
 }
 .backbtn:hover {
   box-shadow: 1px 1px 1px 1px hsl(0, 0%, 52%);
+}
+@media only screen and (max-width: 960px){
+  .country-card {
+    height: 30vh;
+  }
+  .single-countryflag {
+    height: 30vh;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .country-card {
+    width: 30vw;
+    height: 45vh;
+  }
+  #countries-container {
+    grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+  }
+  .single-countryflag {
+    height: 50vh;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .country-card {
+    width: 40vw;
+    height: 35vh;
+  }
+  #countries-container {
+    padding: 0px 30px;
+  }
+  nav h1 {
+    padding: 30px;
+  }
+  .top{
+    margin: 20px 30px;
+    flex-direction: column;
+  }
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .country-card-text {
+    padding: 10px;
+  }
+  .single-countrycard {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-text {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .single-countryflag{
+    width: 75vw;
+    height: 30vh;
+  }
+}
+@media only screen and (max-width: 385px) and (max-height: 641px) {
+  .country-card-text {
+    padding: 0px 0px 0px 2px;
+  } 
+}
+@media only screen and (max-height: 360px) {
+  .country-card {
+    height: 60vh;
+  }
+  .country-card-text {
+    padding: 0px 5px;
+  }
+}
+@media only screen and (max-width: 376px) {
+  .country-card {
+    width: 60vw;
+  }
+  #countries-container {
+    grid-template-columns: repeat(auto-fill, minmax(60vw, 1fr));
+  }
+  .country-card-text {
+    padding: 10px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .country-card {
+    width: 80vw;
+    height: 45vh;
+  }
+  
 }

@@ -154,7 +154,7 @@ function displayCountryData(countries) {
     countryPopulation.textContent = `Population: `;
     const countryPopulationValue = document.createElement("span");
     countryPopulationValue.textContent =
-      selectedcountry.population.toLocaleString();
+    selectedcountry.population.toLocaleString();
     countryPopulationValue.classList.add("okay");
     countryPopulation.appendChild(countryPopulationValue);
     countryPopulation.classList.add("data");
