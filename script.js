@@ -1,5 +1,7 @@
+// filter by continent dropdown 
 let filter = document.getElementById("filter");
 let region = document.getElementById("region");
+let cont = document.querySelectorAll(".continent-button")
 let labels = region.getElementsByTagName("label");
 let radio = region.getElementsByTagName("input");
 for (let i = 0; i < labels.length; i++) {
@@ -11,11 +13,13 @@ for (let i = 0; i < labels.length; i++) {
 filter.onclick = function () {
   region.classList.toggle("display");
 };
-region.onclick = function () {
-  if (region.classList.contains("display")) {
-    region.classList.remove("display");
+for (let index = 0; index < cont.length; index++) {
+  cont[index].onclick = function () {
+    if (region.classList.contains("display")) {
+      region.classList.remove("display");
+    }
   }
-};
+}
 
 // Function to fetch country data from the API
 function fetchCountryData() {
@@ -273,6 +277,7 @@ function displayCountryData(countries) {
       // add search field
       let top = document.querySelector(".top");
       top.classList.remove("none");
+
 
       // Display the default view with all countries
       defaultView.forEach((country) => {
