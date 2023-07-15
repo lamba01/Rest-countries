@@ -36,7 +36,7 @@ nav h1 {
   color: hsl(0, 0%, 98%);
 }
 input:focus {
-  outline: none;
+  outline: hsl(200, 15%, 8%) 2px solid;
 }
 .filt {
   margin-bottom: 5px;
@@ -44,6 +44,9 @@ input:focus {
   padding: 10px;
   width: 150px;
   cursor: pointer;
+}
+.filt:hover {
+  box-shadow: 1px 1px 1px 1px hsl(0, 0%, 52%);
 }
 .region {
   background-color: hsl(209, 23%, 22%);
@@ -70,6 +73,9 @@ input:focus {
   cursor: pointer;
   padding-bottom: 2px;
 }
+.continent-button:hover {
+  color: hsl(0, 0%, 52%);
+}
 .display {
   max-height: 150px;
   padding: 10px;
@@ -87,7 +93,7 @@ ul {
   border-radius: 2px;
 }
 .country-card:hover {
-  box-shadow: 1px 1px black;
+  box-shadow: 2px 2px hsl(0, 0%, 52%);
 }
 #countries-container {
   display: grid;
