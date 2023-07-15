@@ -1,5 +1,13 @@
 let filter = document.getElementById("filter");
 let region = document.getElementById("region");
+let labels = region.getElementsByTagName("label");
+let radio = region.getElementsByTagName("input");
+for (let i = 0; i < labels.length; i++) {
+  labels[i].addEventListener('click', () => {
+    radio[i].checked = true;
+    console.log(labels[i].innerHTML);
+  });
+}
 filter.onclick = function () {
   region.classList.toggle("display");
 };
@@ -113,6 +121,10 @@ function displayCountryData(countries) {
 
     // create container for flag
     const countryflagdiv = document.createElement("div");
+
+    for (let i = 0; i < radio.length; i++) {
+      radio[i].checked = false;
+    }
 
     // Create and append the selected country card
     const maindiv = document.createElement("div");

@@ -27,7 +27,7 @@ nav h1 {
   top: 100px;
   z-index: 2;
 }
-input {
+.search-input {
   width: 30%;
   height: 30px;
   padding: 20px;
@@ -57,10 +57,14 @@ input:focus {
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: 0px;
-  -webkit-transition: max-height, 0.8s ease-in-out;
-  transition: max-height, 0.8s ease-in-out;
+  -webkit-transition: max-height, 1s ease-in-out;
+  transition: max-height, 1s ease-in-out;
   overflow-y: hidden;
   overflow-x: hidden;
+}
+.ss {
+  display: flex;
+  justify-content: space-between;
 }
 .continent-button {
   cursor: pointer;
