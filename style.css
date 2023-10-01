@@ -59,11 +59,21 @@ input:focus {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-height: 0px;
-  -webkit-transition: max-height, 1s ease-in-out;
-  transition: max-height, 1s ease-in-out;
   overflow-y: hidden;
   overflow-x: hidden;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translatex(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0%);
+  }
 }
 .ss {
   display: flex;
@@ -154,7 +164,7 @@ ul {
   font-weight: 600;
 }
 .bordercountries:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 .border {
   display: flex;
@@ -175,7 +185,7 @@ ul {
 .backbtn:hover {
   box-shadow: 1px 1px 1px 1px hsl(0, 0%, 52%);
 }
-@media only screen and (max-width: 960px){
+@media only screen and (max-width: 960px) {
   .country-card {
     height: 30vh;
   }
@@ -206,7 +216,7 @@ ul {
   nav h1 {
     padding: 30px;
   }
-  .top{
+  .top {
     margin: 20px 30px;
     flex-direction: column;
   }
@@ -225,7 +235,7 @@ ul {
     flex-direction: column;
     gap: 10px;
   }
-  .single-countryflag{
+  .single-countryflag {
     width: 75vw;
     height: 30vh;
   }
@@ -233,7 +243,7 @@ ul {
 @media only screen and (max-width: 385px) and (max-height: 641px) {
   .country-card-text {
     padding: 0px 0px 0px 2px;
-  } 
+  }
 }
 @media only screen and (max-height: 360px) {
   .country-card {
@@ -259,5 +269,4 @@ ul {
     width: 80vw;
     height: 45vh;
   }
-  
 }
